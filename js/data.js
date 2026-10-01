@@ -159,4 +159,73 @@ const siteData = {
   ],
   experiences: [],
   blog: [],
+
+  services: [
+    {
+      icon: "📱",
+      name: "Reparación de dispositivos móviles",
+      desc: "Micro soldadura, cambio de pantallas, baterías, conectores y componentes. Android e iPhone.",
+      price: "desde $25.000",
+      place: "Taller / a domicilio",
+    },
+    {
+      icon: "📺",
+      name: "Reparación de TV y electrodomésticos",
+      desc: "Televisores, hornos, lavadoras, pavas y electrodomésticos pequeños. Diagnóstico con instrumental.",
+      price: "desde $18.000",
+      place: "Taller / a domicilio",
+    },
+    {
+      icon: "💻",
+      name: "Servicio técnico de PC",
+      desc: "Armado, upgrade, mantenimiento preventivo, reparación, análisis y optimización de Windows y Linux.",
+      price: "desde $15.000",
+      place: "Taller / a domicilio",
+    },
+    {
+      icon: "🎮",
+      name: "Consolas PlayStation y Xbox",
+      desc: "Limpieza interna, cambio de pasta térmica, reparación y mantenimiento. PS4, PS5, Xbox One y Series.",
+      price: "desde $22.000",
+      place: "Taller",
+    },
+    {
+      icon: "📹",
+      name: "Sistemas de CCTV y seguridad",
+      desc: "Cámaras, DVR/NVR, instalación, configuración y monitoreo. Dahua, Hikvision y compatibles.",
+      price: "consultar",
+      place: "A domicilio",
+    },
+    {
+      icon: "🖨️",
+      name: "Mantenimiento de impresoras 3D",
+      desc: "Limpieza, calibración, cambio de boquillas, corrección de nivelación y mejora de calidad de impresión.",
+      price: "desde $12.000",
+      place: "Taller / a domicilio",
+    },
+    {
+      icon: "🔌",
+      name: "Instalaciones eléctricas",
+      desc: "Canalizaciones, tableros, tendido de cables y puesta en marcha, según normas.",
+      price: "consultar",
+      place: "A domicilio",
+    },
+    {
+      icon: "☀️",
+      name: "Energía solar",
+      desc: "Estudio, presupuesto e instalación de sistemas solares para casa o pyme.",
+      price: "consultar",
+      place: "A domicilio",
+    },
+  ],
+
+  serviceClient: {
+    title: "Para quién trabajo",
+    text: "Clientes sabíos que saben valorar el trabajo de un buen profesional. No busco el más barato: busco al que le importa que el trabajo quede bien hecho y dure.",
+  },
+
+  serviceWhere: {
+    title: "Dónde trabajo",
+    text: "Desde mi taller en Puerto Madryn, y también a domicilio cuando hace falta, con un servicio personalizado y atención directa. Sin intermediarios: hablás con quien hace el trabajo.",
+  },
 };

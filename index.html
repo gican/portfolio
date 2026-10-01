@@ -32,6 +32,29 @@
       </div>
     </div>
 
+    <section id="servicios">
+      <h2>Servicios que ofrezco</h2>
+      <p class="section-lead">
+        Trabajo de taller y a domicilio. Precios de referencia: el presupuesto
+        final se confirma según el equipo y la falla.
+      </p>
+      <div class="card-grid" id="services"></div>
+      <div class="service-notes">
+        <div class="note-card">
+          <h3>🎯 Para quién trabajo</h3>
+          <p id="svc-client"></p>
+        </div>
+        <div class="note-card">
+          <h3>📍 Dónde trabajo</h3>
+          <p id="svc-where"></p>
+        </div>
+      </div>
+      <div class="cta-services">
+        <a class="btn" href="blog.html">Pedir presupuesto por la agenda</a>
+        <a class="btn btn-ghost" href="https://wa.me/542804856318" target="_blank" rel="noopener">Escribime por WhatsApp</a>
+      </div>
+    </section>
+
     <section id="experiencia">
       <h2>Experiencia</h2>
       <div id="exp"></div>
@@ -54,6 +77,24 @@
   <script src="js/ui.js"></script>
   <script>
     document.querySelector(".nav-links").innerHTML = renderNav("index.html");
+
+    document.getElementById("services").innerHTML = siteData.services
+      .map(
+        (s) => `
+        <div class="card service-card">
+          <div class="service-icon">${s.icon}</div>
+          <h3>${s.name}</h3>
+          <p>${s.desc}</p>
+          <div class="service-foot">
+            <span class="price">${s.price}</span>
+            <span class="place">${s.place}</span>
+          </div>
+        </div>`
+      )
+      .join("");
+
+    document.getElementById("svc-client").textContent = siteData.serviceClient.text;
+    document.getElementById("svc-where").textContent = siteData.serviceWhere.text;
 
     document.getElementById("skills").innerHTML = siteData.skills
       .map((s) => `<span class="tag">${s}</span>`)

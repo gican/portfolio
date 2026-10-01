@@ -433,6 +433,174 @@ textarea {
   margin-top: 0.5rem;
 }
 
+/* =========================================================
+   FONDO ELECTRÓNICO / TECNOLÓGICO (circuitos + tipografía)
+   ========================================================= */
+body {
+  background-color: #070b18;
+  background-image:
+    /* tipografía técnica sutil al fondo */
+    radial-gradient(1200px 600px at 12% 8%, rgba(56, 189, 248, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 88% 22%, rgba(167, 139, 250, 0.10), transparent 60%),
+    radial-gradient(800px 600px at 50% 100%, rgba(45, 212, 191, 0.08), transparent 65%),
+    linear-gradient(180deg, #070b18 0%, #0b1226 45%, #070b18 100%);
+  background-attachment: fixed;
+}
+
+/* retícula de circuito */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.055) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 25%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 25%, #000 40%, transparent 100%);
+}
+
+/* nodos / pads de circuito en las esquinas */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.32;
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(56, 189, 248, 0.5) 1.5px, transparent 1.6px),
+    radial-gradient(circle at 34px 34px, rgba(167, 139, 250, 0.4) 1.5px, transparent 1.6px);
+  background-size: 92px 92px, 138px 138px;
+}
+
+header, main, footer { position: relative; z-index: 1; }
+
+/* banner técnico del hero */
+.hero {
+  position: relative;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+}
+.hero::after {
+  content: "REPARACIÓN  ·  CTV  ·  REDES  ·  3D  ·  SOLAR  ·  MICRO-SOLDADURA";
+  position: absolute;
+  bottom: -0.55rem;
+  right: 1rem;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: rgba(56, 189, 248, 0.45);
+  background: var(--bg);
+  padding: 0 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+h2 {
+  font-family: "Consolas", "Courier New", monospace;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   SERVICIOS
+   ========================================================= */
+.section-lead {
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  max-width: 640px;
+}
+
+.service-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-icon {
+  font-size: 1.9rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.service-card p {
+  flex: 1;
+}
+
+.service-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--surface);
+  flex-wrap: wrap;
+}
+
+.price {
+  font-weight: 700;
+  color: #5eead4;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.95rem;
+}
+
+.place {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  background: var(--surface);
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+}
+
+.service-notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.note-card {
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.07), rgba(56, 189, 248, 0.05));
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  border-left: 3px solid #2dd4bf;
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+}
+
+.note-card h3 {
+  font-size: 0.95rem;
+  color: #5eead4;
+  margin-bottom: 0.4rem;
+}
+
+.note-card p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.cta-services {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-ghost:hover {
+  background: rgba(56, 189, 248, 0.12);
+}
+
 @media (max-width: 600px) {
   main { padding: 1.25rem; }
   .hero h1 { font-size: 2rem; }

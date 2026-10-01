@@ -1,11 +1,15 @@
 function renderNav(active) {
   const links = [
     { href: "index.html", label: "Hoja de Vida" },
+    { href: "index.html#servicios", label: "Servicios" },
     { href: "experiencias.html", label: "Experiencias" },
-    { href: "blog.html", label: "Blog" },
+    { href: "blog.html", label: "Agenda" },
   ];
   return links
-    .map((l) => `<a href="${l.href}" class="${l.href === active ? "active" : ""}">${l.label}</a>`)
+    .map(
+      (l) =>
+        `<a href="${l.href}" class="${l.href.split("#")[0] === active ? "active" : ""}">${l.label}</a>`
+    )
     .join("");
 }
 
