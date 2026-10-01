@@ -376,16 +376,31 @@
   // ====================================================
   auth.onAuthStateChanged(function (user) {
     Blog.author = user;
-    // cleanup old subscriptions
+
+    // Always drop previous listeners before re-rendering for the new role.
+    Blog.stopThreads();
+    Object.keys(unsubs).forEach(function (k) {
+      try { unsubs[k](); } catch (e) {}
+    });
+    unsubs = {};
+
+    // Never leave the admin panel (nor admin data) on screen for a non-admin.
+    if (!user || !Blog.isAdmin()) {
+      adminPanel.style.display = "none";
+      adminPanel.innerHTML = "";
+    }
+
     renderAuthArea();
+
     if (user && Blog.isAdmin()) {
       newThreadWrap.style.display = "none";
     } else if (user) {
       newThreadWrap.style.display = "block";
       bindNewThread();
+    } else {
+      newThreadWrap.style.display = "none";
     }
+
     Blog.loadThreads(renderThreads);
   });
-
-  Blog.loadThreads(renderThreads);
 })();

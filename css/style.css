@@ -454,13 +454,13 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.85;
   background-image:
-    linear-gradient(rgba(56, 189, 248, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(56, 189, 248, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.10) 1px, transparent 1px);
   background-size: 46px 46px;
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 25%, #000 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 25%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 120% 90% at 50% 30%, #000 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 120% 90% at 50% 30%, #000 55%, transparent 100%);
 }
 
 /* nodos / pads de circuito en las esquinas */
@@ -470,11 +470,19 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.32;
+  opacity: 0.6;
   background-image:
-    radial-gradient(circle at 12px 12px, rgba(56, 189, 248, 0.5) 1.5px, transparent 1.6px),
-    radial-gradient(circle at 34px 34px, rgba(167, 139, 250, 0.4) 1.5px, transparent 1.6px);
-  background-size: 92px 92px, 138px 138px;
+    radial-gradient(circle at 12px 12px, rgba(56, 189, 248, 0.75) 1.5px, transparent 1.6px),
+    radial-gradient(circle at 34px 34px, rgba(167, 139, 250, 0.6) 1.5px, transparent 1.6px),
+    radial-gradient(circle at 58px 58px, rgba(45, 212, 191, 0.45) 1.2px, transparent 1.3px);
+  background-size: 92px 92px, 138px 138px, 184px 184px;
+}
+
+/* Trazas de circuito: líneas que conectan los nodos */
+body::after {
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 45px, rgba(56, 189, 248, 0.05) 45px 46px),
+    repeating-linear-gradient(90deg, transparent 0 45px, rgba(167, 139, 250, 0.04) 45px 46px);
 }
 
 header, main, footer { position: relative; z-index: 1; }
@@ -599,6 +607,54 @@ h2 {
 
 .btn-ghost:hover {
   background: rgba(56, 189, 248, 0.12);
+}
+
+/* =========================================================
+   BOTONES FLOTANTES (WhatsApp / volver arriba)
+   ========================================================= */
+.float-actions {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.float-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.float-btn:hover {
+  transform: scale(1.08);
+}
+
+.float-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.float-wa {
+  background: #25d366;
+  color: #fff;
+}
+
+.float-wa:hover {
+  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.5);
+}
+
+@media (max-width: 600px) {
+  .float-actions { right: 0.75rem; bottom: 0.75rem; }
+  .float-btn { width: 48px; height: 48px; }
+  .float-btn svg { width: 26px; height: 26px; }
 }
 
 @media (max-width: 600px) {
