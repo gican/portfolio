@@ -1,0 +1,13 @@
+{
+  "name": "gianfranco-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio de Gianfranco Di Pisa Echague",
+  "scripts": {
+    "start": "serve .",
+    "serve": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.3",
+    "three": "^0.160.0"
+  }
+}

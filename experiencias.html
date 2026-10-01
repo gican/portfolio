@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gianfranco Di Pisa Echague · Experiencias</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="index.html">Gianfranco Di Pisa</a>
+      <div class="nav-links"></div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Experiencias</h1>
+      <p>
+        Material audiovisual de mis trabajos, proyectos y recorrido profesional:
+        fotos y videos de campo, instalaciones y reparaciones.
+      </p>
+    </div>
+
+    <section>
+      <div class="card-grid" id="gallery"></div>
+      <p class="empty" id="empty" style="display:none">
+        Todavía no hay contenido audiovisual. Cuando me entregues fotos y videos,
+        los agregaremos aquí.
+      </p>
+    </section>
+  </main>
+
+  <footer>Gianfranco Di Pisa Echague · Puerto Madryn, Argentina</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    document.querySelector(".nav-links").innerHTML = renderNav("experiencias.html");
+
+    const items = siteData.experiences;
+    const gallery = document.getElementById("gallery");
+
+    if (items.length === 0) {
+      document.getElementById("empty").style.display = "block";
+    } else {
+      gallery.innerHTML = items
+        .map((it) => {
+          const media =
+            it.type === "video"
+              ? `<video controls muted preload="metadata" src="${it.src}" alt="${it.title}"></video>`
+              : `<img src="${it.src}" alt="${it.title}" loading="lazy" />`;
+          return `
+            <div class="card media">
+              ${media}
+              <div class="card-body">
+                <h3>${it.title}</h3>
+                <p>${it.description || ""}</p>
+              </div>
+            </div>`;
+        })
+        .join("");
+    }
+
+    renderGoUp();
+  </script>
+</body>
+</html>

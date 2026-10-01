@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gianfranco Di Pisa Echague · Agenda de Servicios</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="index.html">Gianfranco Di Pisa</a>
+      <div class="nav-links"></div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1 id="page-title">Agenda de Servicios</h1>
+      <p id="page-sub">
+        Consultá por mis servicios, seguí tus proyectos en tiempo real y
+        mirá mis avances diarios. Registrate para consultarme y mantener una
+        conversación privada conmigo.
+      </p>
+    </div>
+
+    <!-- Auth (login/registro) -->
+    <section id="auth-area"></section>
+
+    <!-- Panel admin -->
+    <section id="admin-panel" style="display:none"></section>
+
+    <!-- Cliente: nueva consulta -->
+    <section id="new-thread-wrap" style="display:none">
+      <div class="form-card">
+        <h3>Nueva consulta / pedido de servicio</h3>
+        <label for="thread-subject">Asunto</label>
+        <input type="text" id="thread-subject" placeholder="Ej: Instalación de cámara CCTV" />
+        <label for="thread-message">Tu consulta</label>
+        <textarea id="thread-message" placeholder="Contame qué necesitás..."></textarea>
+        <div class="error" id="thread-error"></div>
+        <div style="margin-top:.75rem">
+          <button class="btn" id="thread-submit">Enviar consulta</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thread list -->
+    <section id="thread-list"></section>
+  </main>
+
+  <footer>Gianfranco Di Pisa Echague · Puerto Madryn, Argentina</footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build/dev artifacts
+*.log
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# IMPORTANT: local Firebase config with your API keys.
+# Keep firebase-config.js OUT of git. On a fresh clone, copy it from
+# firebase-config.example.js and paste your own keys.
+js/firebase-config.js
+
+# Firebase local emulator state
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+*-debug.log
+
+# Unrelated experiments (game prototypes) — not part of the portfolio
+shooter.html
+shooter-doom.html

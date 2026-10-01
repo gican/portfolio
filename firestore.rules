@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ADMIN UNICO E INMUTABLE: solo este email tiene rol de administrador.
+    // Nunca se lee de ningún documento ni del cliente: se fija por email de auth.
+    function isAdmin() {
+      return request.auth != null
+             && request.auth.token.email == 'giandatas@hotmail.com';
+    }
+
+    // ---- Hilos privados (consultas cliente-admin) ----
+    // Debajo de la raíz, acceso SOLO para admin o el dueño exacto.
+    match /threads/{threadId} {
+      allow read: if isAdmin()
+                || (request.auth != null
+                    && request.auth.uid == resource.data.clientUid);
+      // Solo el propio cliente puede crear su hilo.
+      allow create: if request.auth != null
+                    && request.resource.data.clientUid == request.auth.uid;
+      // Solo el admin puede actualizar/borrar (estado, visibilidad, etc).
+      allow update, delete: if isAdmin();
+
+      // ---- Mensajes: aislados igual que el hilo. ----
+      match /messages/{msgId} {
+        allow read: if isAdmin()
+                  || (request.auth != null
+                      && request.auth.uid == resource.data.clientUid);
+        allow create: if request.auth != null
+                      && (isAdmin()
+                          || request.resource.data.clientUid == request.auth.uid);
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // ---- Hilos públicos (testimonios): lectura pública, escritura SOLO admin ----
+    match /public_threads/{threadId} {
+      allow read: if true;
+      allow write: if isAdmin();
+
+      match /messages/{msgId} {
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gianfranco Di Pisa Echague · Hoja de Vida</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="index.html">Gianfranco Di Pisa</a>
+      <div class="nav-links"></div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Gianfranco Di Pisa Echague</h1>
+      <div class="role">Técnico en Electrónica · Fullstack Jr. · Seguridad Electrónica</div>
+      <p>
+        Apasionado por la tecnología, la electrónica y la seguridad. Con experiencia
+        internacional en reparación y mantenimiento de dispositivos, y formación sólida
+        en redes, ciberseguridad, programación web y energías renovables. Busco crear
+        soluciones técnicas con impacto real.
+      </p>
+      <div class="contact">
+        <span>✉ <a href="mailto:giandatas@hotmail.com">giandatas@hotmail.com</a></span>
+        <span>☎ +54 9 280 4856318</span>
+        <span>📍 Puerto Madryn, Chubut, Argentina</span>
+        <span>🎂 21/05/2001</span>
+      </div>
+    </div>
+
+    <section id="experiencia">
+      <h2>Experiencia</h2>
+      <div id="exp"></div>
+    </section>
+
+    <section id="educacion">
+      <h2>Educación</h2>
+      <div id="edu"></div>
+    </section>
+
+    <section id="habilidades">
+      <h2>Habilidades</h2>
+      <div class="tech-tags" id="skills"></div>
+    </section>
+  </main>
+
+  <footer>Gianfranco Di Pisa Echague · Puerto Madryn, Argentina</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    document.querySelector(".nav-links").innerHTML = renderNav("index.html");
+
+    document.getElementById("skills").innerHTML = siteData.skills
+      .map((s) => `<span class="tag">${s}</span>`)
+      .join("");
+
+    document.getElementById("exp").innerHTML = siteData.experience
+      .map(
+        (e) => {
+          const ref = e.ref
+            ? `<span class="meta" style="display:inline-block;margin-top:.5rem;font-size:.85rem">Ref. ${e.ref.name} (${e.ref.phone})</span>`
+            : "";
+          return `
+        <div class="item">
+          <div class="item-header">
+            <h3>${e.role}</h3>
+            ${e.dates ? `<span class="meta">${e.dates}</span>` : ""}
+          </div>
+          <div class="meta">${e.company} · ${e.location}</div>
+          <ul class="bullets">${e.bullets.map((b) => `<li>${b}</li>`).join("")}</ul>
+          ${ref}
+        </div>`;
+        }
+      )
+      .join("");
+
+    document.getElementById("edu").innerHTML = siteData.education
+      .map(
+        (e) => `
+        <div class="item">
+          <div class="item-header">
+            <h3>${e.title}</h3>
+            <span class="meta">${e.dates}</span>
+          </div>
+          <div class="meta">${e.institution} · ${e.location}</div>
+          <p style="margin-top:.5rem;color:var(--text-dim);font-size:.9rem">${e.notes}</p>
+        </div>`
+      )
+      .join("");
+
+    renderGoUp();
+  </script>
+</body>
+</html>
