@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gianfranco Di Pisa Echague · Servicios</title>
+  <meta name="description" content="Reparación de móviles, TV, electrodomésticos, servicio técnico de PC, consolas, CCTV, impresoras 3D, instalaciones eléctricas y energía solar. Puerto Madryn y a domicilio." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="index.html">Gianfranco Di Pisa</a>
+      <div class="nav-links"></div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Servicios que ofrezco</h1>
+      <div class="role">Reparación · Instalaciones · Seguridad · Soporte técnico</div>
+      <p>
+        Trabajo de taller y a domicilio. Los precios son de referencia: el
+        presupuesto final se confirma según el equipo y la falla. Consultame
+        sin compromiso.
+      </p>
+      <div class="contact">
+        <span>✉ <a href="mailto:giandatas@hotmail.com">giandatas@hotmail.com</a></span>
+        <span>☎ +54 9 280 4856318</span>
+        <span>📍 Puerto Madryn, Chubut, Argentina</span>
+      </div>
+    </div>
+
+    <section id="listado">
+      <h2>Listado de servicios</h2>
+      <div class="card-grid" id="services"></div>
+    </section>
+
+    <section id="condiciones">
+      <h2>Cómo trabajo</h2>
+      <div class="service-notes">
+        <div class="note-card">
+          <h3>🎯 Para quién trabajo</h3>
+          <p id="svc-client"></p>
+        </div>
+        <div class="note-card">
+          <h3>📍 Dónde trabajo</h3>
+          <p id="svc-where"></p>
+        </div>
+      </div>
+      <div class="cta-services">
+        <a class="btn" href="blog.html">Pedir presupuesto por la agenda</a>
+        <a class="btn btn-ghost" href="https://wa.me/542804856318" target="_blank" rel="noopener">Escribime por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Gianfranco Di Pisa Echague · Puerto Madryn, Argentina</footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    document.querySelector(".nav-links").innerHTML = renderNav("servicios.html");
+
+    document.getElementById("services").innerHTML = siteData.services
+      .map(
+        (s) => `
+        <div class="card service-card">
+          <div class="service-icon">${s.icon}</div>
+          <h3>${s.name}</h3>
+          <p>${s.desc}</p>
+          <div class="service-foot">
+            <span class="price">${s.price}</span>
+            <span class="place">${s.place}</span>
+          </div>
+        </div>`
+      )
+      .join("");
+
+    document.getElementById("svc-client").textContent = siteData.serviceClient.text;
+    document.getElementById("svc-where").textContent = siteData.serviceWhere.text;
+
+    renderGoUp();
+  </script>
+</body>
+</html>
