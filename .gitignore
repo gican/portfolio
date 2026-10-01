@@ -26,3 +26,5 @@ ui-debug.log
 # Unrelated experiments (game prototypes) — not part of the portfolio
 shooter.html
 shooter-doom.html
+js/game-systems.js
+js/test-systems.js
